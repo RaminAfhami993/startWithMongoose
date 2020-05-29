@@ -18,10 +18,23 @@ const User = require('../models/user');
 
 
 
-User.find({}, function(err, users) {
+// User.find({}, function(err, users) {
+//     if (err) console.log(err);
+//     else console.log(users[0].id);
+// });
+
+
+// User.findOneAndUpdate({username: "RezaAhmadi"}, {age: 30}, {new: true}, function(err, user) {
+//     if (err) console.log(err);
+//     else console.log(user);
+// });
+
+
+User.findOneAndDelete({username: "RezaAhmadi"}, function(err, user) {
     if (err) console.log(err);
-    else console.log(users[0].id);
+    else console.log(user);
 });
+
 
 
 
