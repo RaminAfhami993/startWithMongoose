@@ -1,4 +1,6 @@
 const User = require('../models/user');
+const Company = require('../models/company');
+
 
 
 // const NEW_USER = new User({
@@ -30,9 +32,24 @@ const User = require('../models/user');
 // });
 
 
-User.findOneAndDelete({username: "RezaAhmadi"}, function(err, user) {
+// User.findOneAndDelete({username: "RezaAhmadi"}, function(err, user) {
+//     if (err) console.log(err);
+//     else console.log(user);
+// });
+
+
+
+const NEW_COMPANY = new Company({
+    name: "AliBaba122",
+    phoneNumber: 3453462456122,
+    address: "Mashhad city",
+    level: "A"
+});
+
+
+NEW_COMPANY.save((err, newCompany) => {
     if (err) console.log(err);
-    else console.log(user);
+    else console.log(newCompany);
 });
 
 
