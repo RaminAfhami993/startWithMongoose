@@ -35,11 +35,23 @@ router.get("/allUsers", (req, res) => {
 
 
 router.put("/updateUser/:userId", (req, res) => {
-    console.log(req.params.userId);
     
 
     User.findByIdAndUpdate(req.params.userId, req.body, {new: true}, (err, user) => {
         if (err) return res.status(500).send("Somthing went wrong in update user! \n" + err);
+        return res.json(user)
+    })
+});
+
+
+
+
+router.delete("/deleteUser/:userId", (req, res) => {
+    
+
+    User.findByIdAndDelete(req.params.userId, (err, user) => {
+        if (err) return res.status(500).send("Somthing went wrong in delete user! \n" + err);
+        if (!user) return res.status(404).send("User not found")
         return res.json(user)
     })
 });
