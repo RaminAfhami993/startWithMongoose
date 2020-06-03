@@ -7,15 +7,13 @@ const mongoose = require("mongoose");
 
 
 mongoose.connect(
-    'mongodb://localhost:27017/startWithMongoose'
+    'mongodb://localhost:27017/Blog'
 , {
     useNewUrlParser: true,
     useUnifiedTopology: true
 });
 
 
-
-require('./tools/mongoClient');
 
 
 console.log(path.join(__dirname, 'views'));
@@ -34,22 +32,10 @@ app.use(bodyParser.json({
 })); // parse application/vnd.api+json as json
 
 
-app.use('/auth', usersRouter);
-
-console.log("after");
-
-app.get("/", function (req, res) {
-    console.log(1);
-    res.send('a');
-});
+app.use('/users', usersRouter);
 
 
-app.get("/.....", function (req, res) {
 
-    parameter
-    console.log(1);
-    res.send('a');
-});
 
 
 
