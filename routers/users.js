@@ -1,37 +1,26 @@
 const express = require("express");
 const router = express.Router();
-const path = require("path");
-const fs = require("fs");
+const User = require('../models/user');
 
 
-router.post("/login", function(req, res) {
+router.post("/addUser", function(req, res) {
 
-    try {
-        
-        throw {
-            message: "message",
-            status: 400
-        };
+    const NEW_USER = new User({
+        username: req.body.username,
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        age: req.body.age,
+        male: req.body.male,
+    })
 
-    } catch (err) {
-        res.send(err);
+    NEW_USER.save(function(err, user) {        
+        if (err) return res.status(500).send("Somthing went wrong!" + err);
+        return res.json({
+            user,
+            message: "User added successfully"
+        })
+    })
 
-    };
-
-
-
-    // fs.readFile('text.txt', 'utf8', function(err, data) {
-    //     if (err) {
-    //         res.send("somthing went wrong!");
-    //     } else {
-    //         res.send(data)
-    //     }
-    // });
-});
-
-
-router.get("/dashboard", function(req, res) {
-    res.render(path.join(__dirname, '../views/pages/dashboard.ejs'), {name: 1});
 });
 
 
